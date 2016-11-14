@@ -1,7 +1,7 @@
 {
     "name": "generator-mendixreact",
     "version": "0.0.1",
-    "description": "Mendix generator for typescript, react widgets",
+    "description": "Yeoman generator for Mendix widgets using react, typescript and webpack.",
     "license": "MIT",
     "main": "app/index.js",
     "repository": {
@@ -26,6 +26,9 @@
         "widget",
         "scaffold"
     ],
+    "bugs": {
+        "url": "https://github.com/EdwinKato/generator-mendixreact/issues"
+    },
     "dependencies": {
         "chalk": "^1.0.0",
         "extfs": "0.0.7",

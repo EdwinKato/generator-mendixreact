@@ -6,14 +6,13 @@ This generator uses the Yeoman scaffolding tool to let you quickly create a [Men
 
 ## Prerequisites _(you only have to do this once)_
 
-First, you need to have [Node.js](https://nodejs.org/en/) installed. (We recommend a 4.x LTS version, the widget is tested against version 4 to 6). After that, you need to install Yeoman .
+First, you need to have [Node.js](https://nodejs.org/en/) installed. After that, you need to install Yeoman .
 
 Open a command-line window (Press Win+R and type ``cmd`` or use Powershell)
 
 ```bash
-  npm install -g yo grunt-cli
+  npm install -g yo grunt-cli generator-mendixreact
 ```
-Clone this repo to a folder of your choice then run npm link inside that folder
 
 Scaffold a widget
 
@@ -36,9 +35,9 @@ The following information needs to be provided about your widget:
 * Github username (optional)
 
 You can press \<Enter\> if you want to use the default values.
-### 3. Use this commands to build the widget from the console
+
+### 3. Use these commands to build the widget from the console
 ```bash
 webpack
 grunt build
 ```
-
