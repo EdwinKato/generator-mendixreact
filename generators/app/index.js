@@ -143,8 +143,9 @@ module.exports = yeoman.Base.extend({
                 // Copy generic files
                 this.fs.copy(this.templatePath('icon.png'), this.destinationPath('icon.png'));
                 this.fs.copy(this.templatePath(source + 'README.md'), this.destinationPath('README.md'));
-                this.fs.copy(this.templatePath(emptyBoilerplatePath + 'test/Test.mpr'), this.destinationPath('dist/MxTestProject/Test.mpr'));
-                this.fs.copy(this.templatePath(emptyBoilerplatePath + 'widget.xsd'), this.destinationPath('widget.xsd'));
+                this.fs.copy(this.templatePath(emptyBoilerplatePath + 'MxTestProject/Test.mpr'), this.destinationPath('dist/MxTestProject/Test.mpr'));
+                this.fs.copy(this.templatePath(emptyBoilerplatePath + 'tests/'), this.destinationPath('tests/'));
+                this.fs.copy(this.templatePath(emptyBoilerplatePath + 'widget.xsd'), this.destinationPath('xsd/widget.xsd'));
 
                 // Copy files based on WidgetName
 
@@ -223,6 +224,9 @@ module.exports = yeoman.Base.extend({
             // tslint
             this.fs.copy(this.templatePath('tslint.json'), this.destinationPath('tslint.json'));
 
+            // karma
+            this.fs.copy(this.templatePath('karma.conf.js'), this.destinationPath('karma.conf.js'));
+
             // tsconfig
             this.fs.copy(this.templatePath('tsconfig.json'), this.destinationPath('tsconfig.json'));
 
@@ -245,7 +249,7 @@ module.exports = yeoman.Base.extend({
             } catch (e) {}
             this.template('_package.json', 'package.json', this.widget, {});
 
-            // Add Gulp/Grunt/tsconfig/tslint/webpack
+            // Add Gulp/Grunt/tsconfig/tslint/webpack/karma
             this.pkg = pkg;
 
             try {
@@ -259,6 +263,9 @@ module.exports = yeoman.Base.extend({
             } catch (e) {}
             try {
                 extfs.removeSync(this.destinationPath('tslint.json'));
+            } catch (e) {}
+            try {
+                extfs.removeSync(this.destinationPath('karma.conf.js'));
             } catch (e) {}
             try {
                 extfs.removeSync(this.destinationPath('webpack.config.js'));
