@@ -150,8 +150,20 @@ module.exports = yeoman.Base.extend({
                 // Copy files based on WidgetName
 
                 this.fs.copy(
-                    this.templatePath(source + 'src/WidgetName/widget/components/WidgetNameComponent.ts.ejs'),
-                    this.destinationPath('src/' + this.widget.widgetName + '/widget/components/' + this.widget.widgetName + 'Component.ts'), {
+                    this.templatePath(source + 'src/WidgetName/widget/components/WidgetName.ts.ejs'),
+                    this.destinationPath('src/' + this.widget.widgetName + '/widget/components/' + this.widget.widgetName + '.ts'), {
+                        process: function(file) {
+                            var fileText = file.toString();
+                            fileText = fileText
+                                .replace(/WidgetName/g, this.widget.widgetName);
+                            return fileText;
+                        }.bind(this)
+                    }
+                );
+
+                this.fs.copy(
+                    this.templatePath(source + 'src/WidgetName/widget/components/__tests__/WidgetName.spec.ts'),
+                    this.destinationPath('src/' + this.widget.widgetName + '/widget/components/__tests__/' + this.widget.widgetName + '.spec.ts'), {
                         process: function(file) {
                             var fileText = file.toString();
                             fileText = fileText
