@@ -145,7 +145,7 @@ module.exports = yeoman.Base.extend({
                 this.fs.copy(this.templatePath(source + 'README.md'), this.destinationPath('README.md'));
                 this.fs.copy(this.templatePath(emptyBoilerplatePath + 'MxTestProject/Test.mpr'), this.destinationPath('dist/MxTestProject/Test.mpr'));
                 this.fs.copy(this.templatePath(emptyBoilerplatePath + 'tests/'), this.destinationPath('tests/'));
-                this.fs.copy(this.templatePath(emptyBoilerplatePath + 'widget.xsd'), this.destinationPath('xsd/widget.xsd'));
+                this.fs.copy(this.templatePath(emptyBoilerplatePath + 'xsd/widget.xsd'), this.destinationPath('xsd/widget.xsd'));
 
                 // Copy files based on WidgetName
 
