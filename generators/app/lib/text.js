@@ -25,5 +25,5 @@ module.exports = {
 
     INSTALL_FINISH_MSG: 'Copied files, now running ' + chalk.cyan('npm install') + ' to install development dependencies',
     END_NPM_NEED_INSTALL_MSG: '\n\n> Dependencies should be installed using ' + chalk.cyan('npm install') + ' before I can run the build using ' + chalk.cyan('npm run build') + ' < \n\n',
-    END_RUN_BUILD_MSG: '\n\n> I will now run ' + chalk.cyan('grunt') + ' to build the project (do this before starting the modeler)< \n\n'
+    END_RUN_BUILD_MSG: '\n\n> I will now run ' + chalk.cyan('grunt build') + ' to build the project (do this before starting the modeler)< \n\n'
 };
