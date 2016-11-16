@@ -11,7 +11,8 @@ var yeoman = require('yeoman-generator');
 var promptTexts = require('./lib/prompttexts.js');
 var text = require('./lib/text.js');
 
-var emptyBoilerplatePath = 'WidgetBoilerplate/';
+var emptyBoilerPlatePath = 'EmptyWidgetBoilerplate/',
+    progressBarBoilerplatePath = 'ProgressBarBoilerplate/';
 
 var banner = text.getBanner(pkg);
 
@@ -132,7 +133,7 @@ module.exports = yeoman.Base.extend({
             this.widget.builder = this.props.builder;
 
             if (this.isNew) {
-                var source = emptyBoilerplatePath;
+                var source = this.props.boilerplate === 'progressbarboilerplate' ? progressBarBoilerplatePath : emptyBoilerPlatePath;
                 this.props.widgetOptionsObj = {};
                 if (this.props.boilerplate === 'empty') {
                     for (var i = 0; i < this.props.widgetoptions.length; i++) {
@@ -142,10 +143,11 @@ module.exports = yeoman.Base.extend({
 
                 // Copy generic files
                 this.fs.copy(this.templatePath('icon.png'), this.destinationPath('icon.png'));
-                this.fs.copy(this.templatePath(source + 'README.md'), this.destinationPath('README.md'));
-                this.fs.copy(this.templatePath(emptyBoilerplatePath + 'MxTestProject/Test.mpr'), this.destinationPath('dist/MxTestProject/Test.mpr'));
-                this.fs.copy(this.templatePath(emptyBoilerplatePath + 'tests/'), this.destinationPath('tests/'));
-                this.fs.copy(this.templatePath(emptyBoilerplatePath + 'xsd/widget.xsd'), this.destinationPath('xsd/widget.xsd'));
+                this.fs.copy(this.templatePath(emptyBoilerPlatePath + 'README.md'), this.destinationPath('README.md'));
+                this.fs.copy(this.templatePath(source + 'MxTestProject/Test.mpr'), this.destinationPath('dist/MxTestProject/Test.mpr'));
+                this.fs.copy(this.templatePath(emptyBoilerPlatePath + 'tests/'), this.destinationPath('tests/'));
+                this.fs.copy(this.templatePath(emptyBoilerPlatePath + 'typings/'), this.destinationPath('typings/'));
+                this.fs.copy(this.templatePath(emptyBoilerPlatePath + 'xsd/widget.xsd'), this.destinationPath('xsd/widget.xsd'));
 
                 // Copy files based on WidgetName
 
@@ -174,13 +176,13 @@ module.exports = yeoman.Base.extend({
                 );
 
                 this.fs.copy(
-                    this.templatePath(emptyBoilerplatePath + 'src/WidgetName/widget/ui/WidgetName.css'),
+                    this.templatePath(source + 'src/WidgetName/widget/ui/WidgetName.css'),
                     this.destinationPath('src/' + this.widget.widgetName + '/widget/ui/' + this.widget.widgetName + '.css')
                 );
 
                 // Rename references in widget main ts
                 this.fs.copy(
-                    this.templatePath(emptyBoilerplatePath + 'src/WidgetName/widget/WidgetName.ts.ejs'),
+                    this.templatePath(source + 'src/WidgetName/widget/WidgetName.ts.ejs'),
                     this.destinationPath('src/' + this.widget.widgetName + '/widget/' + this.widget.widgetName + '.ts'), {
                         process: function(file) {
                             var fileText = file.toString();
@@ -200,7 +202,7 @@ module.exports = yeoman.Base.extend({
 
                 // Rename references package.xml
                 this.fs.copy(
-                    this.templatePath(emptyBoilerplatePath + 'src/package.xml'),
+                    this.templatePath(source + 'src/package.xml'),
                     this.destinationPath('src/package.xml'), {
                         process: function(file) {
                             var fileText = file.toString();
@@ -313,8 +315,7 @@ module.exports = yeoman.Base.extend({
             this.log(text.END_NPM_NEED_INSTALL_MSG);
         } else {
             this.log(text.END_RUN_BUILD_MSG);
-            // this.spawnCommand('npm', ['run', 'build']);
-            this.spawnCommand('webpack');
+            this.spawnCommand('grunt');
         }
     }
 });

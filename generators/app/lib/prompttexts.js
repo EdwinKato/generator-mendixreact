@@ -46,19 +46,20 @@ function promptsNew() {
             message: 'Author',
             default: '<You>',
             store: true
+        },
+        {
+            type: 'list',
+            name: 'boilerplate',
+            message: 'Which template do you want to use for the widget?',
+            choices: [{
+                name: 'ProgressBarWidgetBoilerplate (recommended for beginners)',
+                value: 'progressbarboilerplate'
+            }, {
+                name: 'Empty widget (recommended for more experienced developers)',
+                value: 'emptyreactboilerplate'
+            }],
+            store: true
         }
-        /*{
-          // NOT IMPLEMENTED YET
-          type: 'confirm',
-          name: 'useSass',
-          message: 'Do you want to use SASS? (will add _sass folder)',
-          default: false,
-          store: true,
-          when: function (props) {
-            return props.builder === 'gulp';
-          },
-          store: true
-        },*/
     ];
 }
 
