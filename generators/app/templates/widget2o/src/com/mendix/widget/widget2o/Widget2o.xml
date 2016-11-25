@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="com.mendix.widget.widget2o.Widget2o" needsEntityContext="false" experimentalApi="true" xmlns="http://www.mendix.com/widget/1.0/" >
+    <name>Widget 2.0</name>
+    <description/>
+    <icon/>
+    <properties>
+        <property key="message" type="string" defaultValue="Hello world">
+            <caption>Message</caption>
+            <category>Message</category>
+            <description/>
+        </property>
+    </properties>
+</widget>
